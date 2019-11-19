@@ -15,11 +15,11 @@ if test "$PHP_PDO_INFORMIX" != "no"; then
   fi
 
   AC_MSG_CHECKING([for PDO includes])
-  if test -f $abs_srcdir/include/php/ext/pdo/php_pdo_driver.h; then
+  if test -f $abs_srcdir/include/php/20180731/ext/pdo/php_pdo_driver.h; then
     pdo_inc_path=$abs_srcdir/ext
   elif test -f $abs_srcdir/ext/pdo/php_pdo_driver.h; then
     pdo_inc_path=$abs_srcdir/ext
-  elif test -f $prefix/include/php/ext/pdo/php_pdo_driver.h; then
+  elif test -f $prefix/include/php/20180731/ext/pdo/php_pdo_driver.h; then
     pdo_inc_path=$prefix/include/php/ext
   else
     AC_MSG_ERROR([Cannot find php_pdo_driver.h.])
@@ -68,7 +68,7 @@ if test "$PHP_PDO_INFORMIX" != "no"; then
     IFX_ESQL_FLAGS=""
   fi
 
-  IFX_LIBS=`THREADLIB=POSIX $INFORMIXDIR/bin/esql $IFX_ESQL_FLAGS -libs`
+  IFX_LIBS=`THREADLIB=POSIX $INFORMIXDIR/lib/esql $IFX_ESQL_FLAGS -libs`
   IFX_LIBS=`echo $IFX_LIBS | sed -e 's/Libraries to be used://g' -e 's/esql: error -55923: No source or object file\.//g'`
 
   dnl Seems to get rid of newlines.
@@ -80,7 +80,7 @@ if test "$PHP_PDO_INFORMIX" != "no"; then
   esac
 
   AC_MSG_CHECKING([Informix version])
-  IFX_VERSION=[`$INFORMIXDIR/bin/esql -V | grep "ESQL Version" | sed -ne '1 s/\(.*\)ESQL Version \([0-9]*\)\.\([0-9]*\).*/\2\3/p'`]
+  IFX_VERSION=[`$INFORMIXDIR/lib/esql -V | grep "ESQL Version" | sed -ne '1 s/\(.*\)ESQL Version \([0-9]*\)\.\([0-9]*\).*/\2\3/p'`]
   AC_MSG_RESULT($IFX_VERSION)
   AC_DEFINE_UNQUOTED(IFX_VERSION, $IFX_VERSION, [ ])
 

@@ -1,0 +1,18 @@
+#OVERALL_TARGET += /home/damaleda/Escritorio/Archivos/descargas_Informix/PDO_INFORMIX-1.3.3/preprocessed_file.c
+
+#/home/damaleda/Escritorio/Archivos/descargas_Informix/PDO_INFORMIX-1.3.3/ifx.c: /home/damaleda/Escritorio/Archivos/descargas_Informix/PDO_INFORMIX-1.3.3/preprocessed_file.ec ./pdo_informix.a
+#	(if test -d $(INFORMIXDIR); then \
+#	   THREADLIB=POSIX $(INFORMIXDIR)/lib/esql -e $(IFX_ESQL_FLAGS) /home/damaleda/Escritorio/Archivos/descargas_Informix/PDO_INFORMIX-1.3.3/ifx.ec; mv preprocessed_file.c $@; \
+#	   THREADLIB=POSIX $(INFORMIXDIR)/lib/esql -e $(IFX_ESQL_FLAGS) /home/damaleda/Escritorio/Archivos/descargas_Informix/PDO_INFORMIX-1.3.3/ifx.ec; \
+#           mv preprocessed_file.c $@ || true; \
+#	 else \
+#	   touch $@; \
+#	 fi)
+
+./pdo_informix.a:
+	$(LIBTOOL) --mode=link $(CC) $(IFX_LIBOBJS) -o $@
+
+realclean: distclean
+	rm -rf acinclude.m4 aclocal.m4 autom4te.cache build config.guess config.h config.h.in config.nice config.sub configure configure.in .deps include install-sh ltmain.sh Makefile.global missing mkinstalldirs modules
+
+.PHONY: realclean

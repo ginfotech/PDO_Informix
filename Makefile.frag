@@ -2,8 +2,8 @@
 
 #$(srcdir)/ifx.c: $(srcdir)/preprocessed_file.ec $(builddir)/pdo_informix.a
 #	(if test -d $(INFORMIXDIR); then \
-#	   THREADLIB=POSIX $(INFORMIXDIR)/bin/esql -e $(IFX_ESQL_FLAGS) $(srcdir)/ifx.ec; mv preprocessed_file.c $@; \
-#	   THREADLIB=POSIX $(INFORMIXDIR)/bin/esql -e $(IFX_ESQL_FLAGS) $(srcdir)/ifx.ec; \
+#	   THREADLIB=POSIX $(INFORMIXDIR)/lib/esql -e $(IFX_ESQL_FLAGS) $(srcdir)/ifx.ec; mv preprocessed_file.c $@; \
+#	   THREADLIB=POSIX $(INFORMIXDIR)/lib/esql -e $(IFX_ESQL_FLAGS) $(srcdir)/ifx.ec; \
 #           mv preprocessed_file.c $@ || true; \
 #	 else \
 #	   touch $@; \
